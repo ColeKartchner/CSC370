@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+// Function to perform bubble sort on an array
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {          // Outer loop for passes
+        for (int j = 0; j < n - i - 1; j++) {  // Inner loop for comparisons
+            if (arr[j] > arr[j + 1]) {         // Swap if elements are out of order
+                int temp = arr[j];            // Temporary variable to hold value
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};  // Array to sort
+    int n = sizeof(arr) / sizeof(arr[0]);      // Calculate number of elements
+
+    bubbleSort(arr, n);                        // Sort the array
+
+    printf("Sorted array: ");                  // Print the sorted array
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
