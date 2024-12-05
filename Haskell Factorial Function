@@ -1,0 +1,12 @@
+-- Recursive function to calculate the factorial of a number
+factorial :: Integer -> Integer
+factorial 0 = 1                      -- Base case: factorial of 0 is 1
+factorial n = n * factorial (n - 1)  -- Recursive case: n * factorial of (n - 1)
+
+-- Main function to read input and calculate factorial
+main :: IO ()
+main = do
+    putStrLn "Enter a number:"        -- Prompt user for input
+    input <- getLine                 -- Read user input as a string
+    let number = read input :: Integer -- Convert input to an Integer
+    print (factorial number)         -- Calculate and print the factorial
