@@ -1,0 +1,34 @@
+# Class definition for a simple bank account
+class BankAccount
+  attr_accessor :balance # Allows reading and writing of the balance attribute
+
+  # Constructor to initialize a new account with an optional starting balance
+  def initialize(balance = 0)
+    @balance = balance
+  end
+
+  # Method to deposit an amount into the account
+  def deposit(amount)
+    @balance += amount
+  end
+
+  # Method to withdraw an amount from the account
+  def withdraw(amount)
+    if amount <= @balance
+      @balance -= amount
+    else
+      puts "Insufficient funds" # Error message if withdrawal exceeds balance
+    end
+  end
+end
+
+# Creating an account instance with an initial balance of 100
+account = BankAccount.new(100)
+
+# Adding 50 to the account balance
+account.deposit(50)
+puts "Balance after deposit: #{account.balance}" # Prints updated balance
+
+# Withdrawing 30 from the account balance
+account.withdraw(30)
+puts "Balance after withdrawal: #{account.balance}" # Prints updated balance
