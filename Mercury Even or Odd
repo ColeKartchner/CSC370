@@ -1,0 +1,31 @@
+% Module definition for checking if a number is even or odd
+:- module even_check.
+:- interface.
+:- import_module io.
+
+% Main predicate declaration
+:- pred main(io::di, io::uo) is det.
+
+:- implementation.
+:- import_module int.
+
+% Implementation of the main predicate
+main(!IO) :-
+    % Prompt the user to enter a number
+    io.write_string("Enter a number: ", !IO),
+    io.read_line_as_string(Result, !IO),
+    (
+        % Check if the input is valid and convert to an integer
+        Result = ok(String),
+        string.to_int(string.strip(String), Number),
+        (
+            % Check if the number is even or odd
+            Number mod 2 = 0 ->
+                io.write_string("Even\n", !IO)
+            ;
+                io.write_string("Odd\n", !IO)
+        )
+    ;
+        % Handle invalid input
+        io.write_string("Invalid input\n", !IO)
+    ).
